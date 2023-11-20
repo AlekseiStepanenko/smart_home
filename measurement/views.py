@@ -1,5 +1,6 @@
 # TODO: опишите необходимые обработчики, рекомендуется использовать generics APIView классы:
 # TODO: ListCreateAPIView, RetrieveUpdateAPIView, CreateAPIView
+from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.response import Response
@@ -22,19 +23,11 @@ class ListCreateAPIView(ListAPIView):
         return Response({'status': 'Измерение добавлено'})
 
 
-class RetrieveUpdateAPIView(RetrieveAPIView):
+class RetrieveUpdateAPIView(RetrieveUpdateAPIView):
     """Получить информацию по конкретному датчику."""
     queryset = Sensor.objects.all()
-    serializer_class = SensorSerializer
+    serializer_class = SensorDetailSerializer
 
-    def patch(self, request, pk):
-        """Изменить датчик. Указываются название и/или описание."""
-        sensor = Sensor.objects.get(pk=pk)
-        serializer = SensorDetailSerializer(sensor, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-
-        return Response(serializer.data)
 
 
 class CreateAPIView(ListAPIView):
