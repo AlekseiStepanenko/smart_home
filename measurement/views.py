@@ -4,13 +4,13 @@ from rest_framework.generics import RetrieveUpdateAPIView, CreateAPIView, get_ob
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.response import Response
-from rest_framework import serializers
+from rest_framework import serializers, generics
 
 from measurement.models import Sensor, Measurement
 from measurement.serializers import SensorSerializer, SensorDetailSerializer, MeasurementSerializer
 
 
-class ListCreateAPIView(ListCreateAPIView):
+class ListCreateAPIView(generics. ListCreateAPIView):
     """Добавить измерение. Указываются ID датчика и температура"""
     queryset = Measurement.objects.all()
     serializer_class = MeasurementSerializer
