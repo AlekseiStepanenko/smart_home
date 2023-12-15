@@ -20,11 +20,11 @@ Content-Type: application/json
 ###
 
 # обновление датчика
-PATCH {{baseUrl}}/sensors/2/
+PATCH {{baseUrl}}/sensors/1/
 Content-Type: application/json
 
 {
-  "description": "Перенес датчик на балкон"
+  "description": "Перенес датчик в другое место"
 }
 
 ###
@@ -41,5 +41,5 @@ Content-Type: application/json
 ###
 
 # получение информации по датчику
-GET {{baseUrl}}/sensors/2/
+GET {{baseUrl}}/sensors/1/
 Content-Type: application/json
