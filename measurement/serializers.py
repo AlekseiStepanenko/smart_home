@@ -6,7 +6,7 @@ from measurement.models import Sensor, Measurement
 class MeasurementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Measurement
-        fields = ['temperature', 'created_at', 'sensor']
+        fields = ['temp', 'date', 'sensor']
 
 
 class SensorSerializer(serializers.ModelSerializer):
